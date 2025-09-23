@@ -1,0 +1,51 @@
+{{- if .Values.priorityClasses.enabled }}
+{{/*
+Critical Production Priority Classes
+*/}}
+{{- if .Values.priorityClasses.criticalProduction.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.criticalProduction.classes "root" .) }}
+{{- end }}
+
+{{/*
+High Production Priority Classes
+*/}}
+{{- if .Values.priorityClasses.highProduction.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.highProduction.classes "root" .) }}
+{{- end }}
+
+{{/*
+Standard Production Priority Classes
+*/}}
+{{- if .Values.priorityClasses.standardProduction.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.standardProduction.classes "root" .) }}
+{{- end }}
+
+{{/*
+Background Services Priority Classes
+*/}}
+{{- if .Values.priorityClasses.backgroundServices.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.backgroundServices.classes "root" .) }}
+{{- end }}
+
+{{/*
+Development Priority Classes
+*/}}
+{{- if .Values.priorityClasses.development.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.development.classes "root" .) }}
+{{- end }}
+
+{{/*
+Low Priority Priority Classes
+*/}}
+{{- if .Values.priorityClasses.lowPriority.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.lowPriority.classes "root" .) }}
+{{- end }}
+
+{{/*
+Specialized Priority Classes
+*/}}
+{{- if .Values.priorityClasses.specialized.enabled }}
+{{- include "cluster-defaults.priorityClasses" (dict "classes" .Values.priorityClasses.specialized.classes "root" .) }}
+{{- end }}
+
+{{- end }}
