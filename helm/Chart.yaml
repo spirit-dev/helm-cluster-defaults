@@ -1,0 +1,21 @@
+apiVersion: v2
+name: cluster-defaults
+description: A Helm chart for cluster-wide default resources including priority classes and resource quotas
+
+home: https://gitlab-internal.spirit-dev.net/infrastructure/helm/cluster-defaults
+sources:
+  - https://gitlab-internal.spirit-dev.net/infrastructure/helm/cluster-defaults
+
+type: application
+
+# Note: This is a custom internal chart for cluster defaults
+version: 1.0.0
+
+# Note: This is a custom internal application
+appVersion: "1.0.0"
+
+keywords:
+  - cluster
+  - defaults
+  - priority-classes
+  - resource-quotas

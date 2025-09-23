@@ -1,0 +1,191 @@
+# Default values for cluster-defaults.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# Priority Classes Configuration
+priorityClasses:
+  enabled: true
+
+  # System Critical Workloads (Reserved for Kubernetes system components)
+  systemCritical:
+    enabled: true
+    classes:
+      # Note: system-cluster-critical and system-node-critical are built-in
+      # We don't need to create them, they're managed by Kubernetes
+
+  # Critical Production Workloads
+  criticalProduction:
+    enabled: true
+    classes:
+      critical-production:
+        value: 5000
+        description: "Critical production workloads that must never be preempted"
+        globalDefault: false
+
+      database-critical:
+        value: 4500
+        description: "Primary databases and critical data stores"
+        globalDefault: false
+
+      security-critical:
+        value: 4000
+        description: "Authentication services, security scanners, admission controllers"
+        globalDefault: false
+
+  # High Priority Production
+  highProduction:
+    enabled: true
+    classes:
+      high-production:
+        value: 800
+        description: "Important production services with strict SLAs"
+        globalDefault: false
+
+      monitoring-high:
+        value: 750
+        description: "Critical monitoring and alerting systems"
+        globalDefault: false
+
+      ingress-controllers:
+        value: 700
+        description: "Load balancers and ingress controllers"
+        globalDefault: false
+
+  # Standard Production
+  standardProduction:
+    enabled: true
+    classes:
+      standard-production:
+        value: 200
+        description: "Default priority for production workloads"
+        globalDefault: true  # This will be the default priority class
+
+      api-services:
+        value: 180
+        description: "Standard API endpoints and microservices"
+        globalDefault: false
+
+      web-frontend:
+        value: 150
+        description: "Web applications and user interfaces"
+        globalDefault: false
+
+  # Background Services
+  backgroundServices:
+    enabled: true
+    classes:
+      background-processing:
+        value: 75
+        description: "Batch jobs and data processing pipelines"
+        globalDefault: false
+
+      logging:
+        value: 70
+        description: "Log collection and processing"
+        globalDefault: false
+
+      monitoring-standard:
+        value: 65
+        description: "Non-critical monitoring components"
+        globalDefault: false
+
+  # Development and Testing
+  development:
+    enabled: true
+    classes:
+      development:
+        value: 40
+        description: "Development environment workloads"
+        globalDefault: false
+
+      staging:
+        value: 35
+        description: "Staging and pre-production testing"
+        globalDefault: false
+
+      qa-testing:
+        value: 30
+        description: "Quality assurance and automated testing"
+        globalDefault: false
+
+  # Low Priority/Best Effort
+  lowPriority:
+    enabled: true
+    classes:
+      batch-jobs:
+        value: 5
+        description: "Non-urgent batch processing"
+        globalDefault: false
+
+      research:
+        value: 2
+        description: "Experimental or research workloads"
+        globalDefault: false
+
+      preemptible:
+        value: -10
+        description: "Workloads that can be safely interrupted"
+        globalDefault: false
+
+  # Specialized Workload Categories
+  specialized:
+    enabled: true
+    classes:
+      # Data Processing
+      streaming-high:
+        value: 800
+        description: "Real-time stream processing"
+        globalDefault: false
+
+      analytics-medium:
+        value: 200
+        description: "Business intelligence and analytics"
+        globalDefault: false
+
+      etl-low:
+        value: 50
+        description: "Extract, transform, load processes"
+        globalDefault: false
+
+      # Machine Learning
+      ml-inference:
+        value: 600
+        description: "Model serving and inference"
+        globalDefault: false
+
+      ml-training:
+        value: 100
+        description: "Model training workloads"
+        globalDefault: false
+
+      ml-experiments:
+        value: 20
+        description: "Research and experimentation"
+        globalDefault: false
+
+      # Storage and Backup
+      storage-critical:
+        value: 1500
+        description: "Persistent volume controllers"
+        globalDefault: false
+
+      backup-high:
+        value: 300
+        description: "Critical backup operations"
+        globalDefault: false
+
+      backup-routine:
+        value: 75
+        description: "Regular backup jobs"
+        globalDefault: false
+
+# Global Configuration
+global:
+  commonLabels:
+    {}
+    # Example:
+    # spirit-dev.cluster.priority-management: "enabled"
+
+# Chart metadata
+nameOverride: ""
+fullnameOverride: ""

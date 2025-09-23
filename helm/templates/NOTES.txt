@@ -1,0 +1,72 @@
+{{- if .Values.priorityClasses.enabled }}
+Thank you for installing {{ .Chart.Name }}!
+
+This chart has deployed the following priority classes to your cluster:
+
+{{- if .Values.priorityClasses.criticalProduction.enabled }}
+Critical Production Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.criticalProduction.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.highProduction.enabled }}
+High Production Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.highProduction.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.standardProduction.enabled }}
+Standard Production Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.standardProduction.classes }}
+  - {{ $name }} (Priority: {{ $config.value }}){{ if $config.globalDefault }} [DEFAULT]{{ end }}
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.backgroundServices.enabled }}
+Background Services Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.backgroundServices.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.development.enabled }}
+Development Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.development.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.lowPriority.enabled }}
+Low Priority Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.lowPriority.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+{{- if .Values.priorityClasses.specialized.enabled }}
+Specialized Priority Classes:
+{{- range $name, $config := .Values.priorityClasses.specialized.classes }}
+  - {{ $name }} (Priority: {{ $config.value }})
+{{- end }}
+{{- end }}
+
+Usage:
+To use these priority classes in your workloads, add the following to your pod spec:
+
+  spec:
+    priorityClassName: <priority-class-name>
+
+Example:
+  spec:
+    priorityClassName: standard-production
+    containers:
+    - name: my-app
+      image: my-app:latest
+
+For more information, visit: {{ .Chart.Home }}
+{{- else }}
+Priority classes are disabled in this chart configuration.
+To enable them, set priorityClasses.enabled=true
+{{- end }}
