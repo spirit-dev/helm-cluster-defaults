@@ -9,7 +9,7 @@ sources:
 type: application
 
 # Note: This is a custom internal chart for cluster defaults
-version: 1.0.1
+version: 1.0.2
 
 # Note: This is a custom internal application
 appVersion: "1.0.0"
