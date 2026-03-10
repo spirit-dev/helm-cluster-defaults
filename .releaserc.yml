@@ -3,7 +3,7 @@ plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
   - "@semantic-release/gitlab"
-  - - "@google/semantic-release-replace-plugin"
+  - - "semantic-release-replace-plugin"
     - replacements:
         - files:
             - helm/Chart.yaml
