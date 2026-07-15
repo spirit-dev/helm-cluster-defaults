@@ -2,9 +2,7 @@
 
 A Helm chart for deploying cluster-wide default resources including priority classes and resource quotas for Kubernetes clusters.
 
-[![GitLab Sync](https://img.shields.io/badge/gitlab_sync-cluster_scaler-blue?style=for-the-badge&logo=gitlab)](https://gitlab-internal.spirit-dev.net/github-mirror/helm-cluster-defaults) <!-- markdownlint-disable MD041 -->
-[![GitHub Mirror](https://img.shields.io/badge/github_mirror-cluster_scaler-blue?style=for-the-badge&logo=github)](https://github.com/spirit-dev/helm-cluster-defaults)
-[![App Status](https://argocd-internal.spirit-dev.net/api/badge?name=cluster-defaults-turingpi&revision=true&showAppName=true)](https://argocd-internal.spirit-dev.net/applications/cluster-defaults-turingpi)
+
 
 ## Table of content
 <!--TOC-->
@@ -253,4 +251,4 @@ kubectl get pod my-pod -o jsonpath='{.spec.priorityClassName}'
 - Initial release
 - Comprehensive priority class definitions
 - Flexible category-based configuration
-- Support for environment-specific deployments
+- Support for environment-specific deployment
